@@ -1,4 +1,4 @@
-## huawei_let_exporter
+## huawei_lte_exporter
 
 # Install
 
