@@ -40,24 +40,24 @@ def prom_exporter():
 
 	response=[]
 	# Band
-	response.append('HELP band The signal band the LTE connection is using')
-	response.append('TYPE band gauge')
+	response.append('#HELP band The signal band the LTE connection is using')
+	response.append('#TYPE band gauge')
 	response.append('band{'+dev+'} '+signal.get('band'))
 	# rsrp
-	response.append('HELP rsrp The average power received from a single Reference signal, and Its typical range is around -44dbm (good) to -140dbm(bad)')
-	response.append('TYPE rsrp gauge')
+	response.append('#HELP rsrp The average power received from a single Reference signal, and Its typical range is around -44dbm (good) to -140dbm(bad)')
+	response.append('#TYPE rsrp gauge')
 	response.append('rsrp{'+devband+'} '+signal.get('rsrp'))
 	# rsrq
-	response.append('HELP rsrq Indicates quality of the received signal, and its range is typically -19.5dB(bad) to -3dB (good)')
-	response.append('TYPE rsrq gauge')
+	response.append('#HELP rsrq Indicates quality of the received signal, and its range is typically -19.5dB(bad) to -3dB (good)')
+	response.append('#TYPE rsrq gauge')
 	response.append('rsrq{'+devband+'} '+signal.get('rsrq'))
 	# rssi
-	response.append('HELP rssi Represents the entire received power including the wanted power from the serving cell as well as all co-channel power and other sources of noise in dBm')
-	response.append('TYPE rssi gauge')
+	response.append('#HELP rssi Represents the entire received power including the wanted power from the serving cell as well as all co-channel power and other sources of noise in dBm')
+	response.append('#TYPE rssi gauge')
 	response.append('rssi{'+devband+'} '+signal.get('rssi'))
 	# sinr
-	response.append('HELP sinr The signal-to-noise ratio of the given signal in dB')
-	response.append('TYPE sinr gauge')
+	response.append('#HELP sinr The signal-to-noise ratio of the given signal in dB')
+	response.append('#TYPE sinr gauge')
 	response.append('rsrq{'+devband+'} '+signal.get('sinr'))
 	s='\n'
 	return s.join(response)
