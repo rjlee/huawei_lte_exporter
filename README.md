@@ -10,7 +10,7 @@ export ROUTER_USER=admin
 export ROUTER_PASS=admin
 export PROM_PORT=8080
 
-docker run -d -it -p $PROM_PORT:$PROM_PORT --name=hle huawei_lte_exporter
+docker run -d -it -p $PROM_PORT:$PROM_PORT -e ROUTER_ADDRESS=$ROUTER_ADDRESS -e ROUTER_USER=$ROUTER_USER -e ROUTER_PASS=$ROUTER_PASS -e PROM_PORT=$PROM_PORT --name=hle huawei_lte_exporter
 sleep 5
 curl http://localhost:$PROM_PORT
 
