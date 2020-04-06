@@ -58,7 +58,7 @@ def prom_exporter():
 	# sinr
 	response.append('#HELP sinr The signal-to-noise ratio of the given signal in dB')
 	response.append('#TYPE sinr gauge')
-	response.append('rsrq{'+devband+'} '+signal.get('sinr'))
+	response.append('sinr{'+devband+'} '+signal.get('sinr'))
 	s='\n'
 	return s.join(response)
 
