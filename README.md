@@ -65,4 +65,3 @@ Guage values taken from: https://wiki.teltonika-networks.com/view/Mobile_Signal_
 
 ## Todo
 
-* Webserver timeout and error response on not authing/locating router.

@@ -63,10 +63,9 @@ def prom_exporter():
 	return s.join(response)
 
 
-class GetHandler(
-        SimpleHTTPServer.SimpleHTTPRequestHandler
-        ):
-
+class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+	
+    timeout=5
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
