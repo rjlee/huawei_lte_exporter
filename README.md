@@ -54,7 +54,7 @@ rsrq{deviceName="B535-232",iccid="111",band="3"} 11
     scrape_interval: 1m
     static_configs:
     - targets:
-      - wopr.home:9910
+      - server.home:8080
 ```
 
 ### Grafana
