@@ -1,6 +1,13 @@
-## huawei_lte_exporter
+# huawei_lte_exporter
 
-# Install
+A promethus exporter for the Huawei series of 4G LTE routers, exporting various LTE signal strength measures e.g. rssi, snr etc ...  It should be compatible with a range of Huawei routers including B310, B315, B525 and B535.  A full range is listed at [huawei-lte-api](https://pypi.org/project/huawei-lte-api/).
+
+## Example
+
+![Grafana Dashboard Screenshot](/examples/screenshot.png "Grafana Dashboard Screenshot")
+
+
+## Install
 
 ```
 docker build -t huawei_lte_exporter .
@@ -31,3 +38,18 @@ TYPE sinr gauge
 rsrq{deviceName="B535-232",iccid="111"} 11
 ```
 
+## Configure
+
+### Prometheus
+
+```
+  - job_name: '4g'
+    scrape_interval: 1m
+    static_configs:
+    - targets:
+      - wopr.home:9910
+```
+
+### Grafana
+
+Example dashboard [config](/examples/grafana.json)
