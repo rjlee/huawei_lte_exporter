@@ -6,8 +6,15 @@ A promethus exporter for the Huawei series of 4G LTE routers, exporting various 
 
 ![Grafana Dashboard Screenshot](/examples/screenshot.png "Grafana Dashboard Screenshot")
 
-
 ## Install
+
+Follow the usual docker build and run flow.
+
+Required environment variables:
+* ROUTER_ADDRESS - IP address of the Huawei router on your network (typically '192.168.8.1')
+* ROUTER_USER - Username to login to the router (typically 'admin')
+* ROUTER_PASS - Password to login to the router (typically 'admin')
+* PROM_PORT - Port to start the exporter on in the container
 
 ```
 docker build -t huawei_lte_exporter .
@@ -26,16 +33,16 @@ TYPE band gauge
 band{deviceName="B535-232",iccid="111"} 1
 HELP rsrp The average power received from a single Reference signal, and Its typical range is around -44dbm (good) to -140dbm(bad)
 TYPE rsrp gauge
-rsrp{deviceName="B535-232",iccid="111"} -98
+rsrp{deviceName="B535-232",iccid="111",band="3"} -98
 HELP rsrq Indicates quality of the received signal, and its range is typically -19.5dB(bad) to -3dB (good)
 TYPE rsrq gauge
-rsrq{deviceName="B535-232",iccid="111"} -10.0
+rsrq{deviceName="B535-232",iccid="111",band="3"} -10.0
 HELP rssi Represents the entire received power including the wanted power from the serving cell as well as all co-channel power and other sources of noise in dBm
 TYPE rssi gauge
-rssi{deviceName="B535-232",iccid="111"} -71
+rssi{deviceName="B535-232",iccid="111",band="3"} -71
 HELP sinr The signal-to-noise ratio of the given signal in dB
 TYPE sinr gauge
-rsrq{deviceName="B535-232",iccid="111"} 11
+rsrq{deviceName="B535-232",iccid="111",band="3"} 11
 ```
 
 ## Configure
@@ -54,7 +61,7 @@ rsrq{deviceName="B535-232",iccid="111"} 11
 
 Example dashboard [config](/examples/grafana.json)
 
-Gauge values taken from: https://wiki.teltonika-networks.com/view/Mobile_Signal_Strength_Recommendations
+Guage values taken from: https://wiki.teltonika-networks.com/view/Mobile_Signal_Strength_Recommendations
 
 ## Todo
 
