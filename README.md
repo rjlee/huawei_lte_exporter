@@ -53,3 +53,9 @@ rsrq{deviceName="B535-232",iccid="111"} 11
 ### Grafana
 
 Example dashboard [config](/examples/grafana.json)
+
+Gauge values taken from: https://wiki.teltonika-networks.com/view/Mobile_Signal_Strength_Recommendations
+
+## Todo
+
+* Webserver timeout and error response on not authing/locating router.
