@@ -8,7 +8,7 @@ A promethus exporter for the Huawei series of 4G LTE routers, exporting various 
 
 ## Data Availability
 
-Different operators appear to provide different signal information, so not all values will be available across all operators.  A handy way to identify the available information is to login to your router and then view [device api](view-source:http://192.168.8.1/api/device/signal).
+Different operators appear to provide different signal information, so not all values will be available across all operators.  A handy way to identify the available information is to login to your router and then view [device api](http://192.168.8.1/api/device/signal) and view source.
 
 ## Install
 
