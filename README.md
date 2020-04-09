@@ -63,5 +63,7 @@ Example dashboard [config](/examples/grafana.json)
 
 Guage values taken from: https://wiki.teltonika-networks.com/view/Mobile_Signal_Strength_Recommendations
 
+Note: Different operators appear to provide different signal information, so not all values will be available across all operators.  The above dashboard works for Three, however not for Vodafonefor example.
+
 ## Todo
 
