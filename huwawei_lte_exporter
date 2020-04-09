@@ -56,8 +56,7 @@ def prom_exporter():
 			response.append('#TYPE '+attribute+' '+info['type'])
 			response.append(attribute+'{'+info['device']+'} '+info['value'])
 
-	s='\n'
-	return s.join(response)
+	return '\n'.join(response)
 
 
 class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
