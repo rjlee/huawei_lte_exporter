@@ -22,8 +22,8 @@ def prom_exporter():
 	client = Client(connection)
 
 	if os.environ.get('VERBOSE') is not None:
-		pprint.pprint(client.device.signal())  # Can be accessed without authorization
-		pprint.pprint(client.device.information())  # Needs valid authorization, will throw exception if invalid credentials are passed in URL
+		pprint.pprint(client.device.signal())
+		pprint.pprint(client.device.information())
 
 	# Set common response attributes
 	band = client.device.signal().get('band')
