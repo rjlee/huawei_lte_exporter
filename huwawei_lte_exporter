@@ -48,6 +48,7 @@ def prom_exporter():
 		if info['value'] is not None:
 			info['value'] = info['value'].replace("dBm", "")
 			info['value'] = info['value'].replace("dB", "")
+			info['value'] = info['value'].replace(">=", "")
 	# Populate response
 	response=[]
 	for attribute, info in signal.items():
