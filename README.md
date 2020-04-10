@@ -1,6 +1,6 @@
 # huawei_lte_exporter
 
-A promethus exporter for the Huawei series of 4G LTE routers, exporting various LTE signal strength measures e.g. rssi, snr etc ...  It should be compatible with a range of Huawei routers including B310, B315, B525 and B535.  A full range is listed at [huawei-lte-api](https://pypi.org/project/huawei-lte-api/).
+A promethus exporter for the Huawei series of 4G LTE routers, exporting various LTE signal strength measures e.g. rssi, sinr etc ...  It should be compatible with a range of Huawei routers including B310, B315, B525 and B535.  A full range is listed at [huawei-lte-api](https://pypi.org/project/huawei-lte-api/).
 
 ## Example
 
