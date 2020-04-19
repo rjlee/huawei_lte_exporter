@@ -30,7 +30,7 @@ def prom_exporter():
 	device = 'deviceName="'+ client.device.information().get('DeviceName')+'",iccid="'+client.device.information().get('Iccid')+'"'
 	deviceband = device
 	if band is not None:
-		devband = device+',band="'+band+'"'
+		deviceband = device+',band="'+band+'"'
 
 	# Retrieve attributes
 	signal = {	'band': { 'help': 'The signal band the LTE connection is using', 'type': 'gauge', 'device': device, 'value': band},
