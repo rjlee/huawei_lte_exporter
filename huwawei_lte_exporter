@@ -73,7 +73,7 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 #	    raise EnvironmentError("Failed because {} is not set.".format(var))
 
 config = configparser.ConfigParser()
-config.read('huawei_lte_exporter.ini')
+config.read('huwawei_lte_exporter.ini')
 MANDATORY_ENV_VARS = ["ROUTER_ADDRESS", "ROUTER_USER", "ROUTER_PASS", "PROM_PORT"]
 for var in MANDATORY_ENV_VARS:
 	if not config.has_option('DEFAULT', var):
