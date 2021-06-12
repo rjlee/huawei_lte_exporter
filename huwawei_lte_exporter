@@ -2,6 +2,7 @@
 
 import os
 import pprint
+import configparser
 import http.server as SimpleHTTPServer
 import socketserver as SocketServer
 from huawei_lte_api.Client import Client
@@ -9,13 +10,10 @@ from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
 from huawei_lte_api.Connection import Connection
 
 def prom_exporter():
-	MANDATORY_ENV_VARS = ["ROUTER_ADDRESS", "ROUTER_USER", "ROUTER_PASS", "PROM_PORT"]
-	for var in MANDATORY_ENV_VARS:
-	    if var not in os.environ:
-	        raise EnvironmentError("Failed because {} is not set.".format(var))
+
 
 	# Auth to router
-	conn ='http://'+os.environ.get('ROUTER_USER')+':'+os.environ.get('ROUTER_PASS')+'@'+os.environ.get('ROUTER_ADDRESS')+'/'
+	conn ='http://'+config['DEFAULT']['ROUTER_USER']+':'+config['DEFAULT']['ROUTER_PASS']+'@'+config['DEFAULT']['ROUTER_ADDRESS']+'/'
 	connection = AuthorizedConnection(conn)
 
 	# Initiatise client
@@ -68,7 +66,22 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(prom_exporter().encode())
 
+
+#MANDATORY_ENV_VARS = ["ROUTER_ADDRESS", "ROUTER_USER", "ROUTER_PASS", "PROM_PORT"]
+#for var in MANDATORY_ENV_VARS:
+#	if var not in os.environ:
+#	    raise EnvironmentError("Failed because {} is not set.".format(var))
+
+config = configparser.ConfigParser()
+config.read('huawei_lte_exporter.ini')
+MANDATORY_ENV_VARS = ["ROUTER_ADDRESS", "ROUTER_USER", "ROUTER_PASS", "PROM_PORT"]
+for var in MANDATORY_ENV_VARS:
+	if not config.has_option('DEFAULT', var):
+		raise EnvironmentError("Failed because {} is not set.".format(var))
+	if var in os.environ:
+		config['DEFAULT'][var] = os.environ[var]
+
 Handler = GetHandler
-httpd = SocketServer.TCPServer(("", int(os.environ.get('PROM_PORT'))), Handler)
+httpd = SocketServer.TCPServer(("", int(config['DEFAULT']['PROM_PORT'])), Handler)
 
 httpd.serve_forever()
